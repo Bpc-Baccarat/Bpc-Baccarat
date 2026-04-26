@@ -12,7 +12,7 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "hash": game.shoe_hash})
+    return templates.TemplateResponse(request=request, name="index.html", context={"hash": game.shoe_hash})
 
 @app.post("/bet")
 async def place_bet(user_id: int, side: str, amount: float):
